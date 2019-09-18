@@ -12,7 +12,7 @@ export class MessagesComponent implements OnInit {
   private cancelText;
 
   constructor(private bottomSheetRef: MatBottomSheetRef<MessagesComponent>,
-              @Inject(MAT_BOTTOM_SHEET_DATA) private data: { message: string, submitText: string, cancelText: string }) {
+              @Inject(MAT_BOTTOM_SHEET_DATA) public data: { message: string, submitText: string, cancelText: string }) {
     this.cancelText = data.cancelText;
   }
 
