@@ -47,4 +47,4 @@ Thumbs.db
 
 # environment
 # animation
-e2e/**/environments
+e2e/**/environments/environment.*
