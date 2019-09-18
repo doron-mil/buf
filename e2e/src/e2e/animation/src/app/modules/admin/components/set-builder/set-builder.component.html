@@ -1,0 +1,87 @@
+<div class="main">
+
+  <div class="main-admin-container">
+
+    <div class="center-section">
+
+      <div class="field-section">
+        <app-field-main></app-field-main>
+      </div>
+    </div>
+
+    <div class="non-selected-set-container" *ngIf="!selectedSet ">
+      Please select or add set
+    </div>
+
+    <div class="teams-container" *ngIf="selectedSet ">
+      <div class="left-team-section">
+        <app-team-list
+          isLeft="true"
+          [teams]="teams" *ngIf="selectedSet"
+          [selectedTeamProps]="leftTeamProps"
+          [otherTeamProps]="rightTeamProps"
+          (teamChange)="onTeamChanged($event)"
+          (teamKitChange)="onTeamKitChanged($event)"
+          (playerStateChange)="onPlayerAddedOrRemoved($event)">
+        </app-team-list>
+      </div>
+
+
+      <div class="right-team-section">
+        <app-team-list [teams]="teams" *ngIf="selectedSet"
+                       [selectedTeamProps]="rightTeamProps"
+                       [otherTeamProps]="leftTeamProps"
+                       (teamChange)="onTeamChanged($event,false)"
+                       (teamKitChange)="onTeamKitChanged($event,false)"
+                       (playerStateChange)="onPlayerAddedOrRemoved($event,false)">
+        </app-team-list>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="bottom-toolbar-container">
+    <app-bottom-toolbar style="z-index:3" class="app-bottom-toolbar"
+                        [controlsTemplate]="adminControlsTemplate">
+
+    </app-bottom-toolbar>
+  </div>
+
+</div>
+
+<ng-template #adminControlsTemplate>
+  <section class="controls-section-template">
+    <div class="set-select-container">
+      <mat-form-field>
+        <mat-select [(value)]="selectedSetId" [placeholder]="selectedSet?'Select a set':'Select a set or add new'"
+                    (selectionChange)="onSetSelectionChange($event)" class="select-set" panelClass="select-set-panel">
+          <mat-option *ngFor="let set of setsArray" [value]="set.id">
+            {{ set.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <button mat-stroked-button class="toolbar-svg-button"
+            matTooltip="New Set" matTooltipClass="toolbar-buttons-tooltip"
+            (click)="addSetOpenDialog()">
+      <mat-icon>add_to_photos</mat-icon>
+    </button>
+
+    <button mat-stroked-button class="toolbar-svg-button" [disabled]="!selectedSet "
+            matTooltip="Delete Selected Set" matTooltipClass="toolbar-buttons-tooltip"
+            (click)="deleteSet()">
+      <mat-icon>delete</mat-icon>
+    </button>
+
+    <button mat-stroked-button class="toolbar-svg-button" [disabled]="!selectedSet || !needsSaving"
+            matTooltip="Save Selected Set" matTooltipClass="toolbar-buttons-tooltip"
+            (click)="saveSet()">
+      <mat-icon>save</mat-icon>
+    </button>
+
+  </section>
+</ng-template>
+

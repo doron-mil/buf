@@ -1,0 +1,26 @@
+<div #player class="playerMain moveTransition"
+  [ngStyle]="{'transition-duration':duration+'s',
+  'transform':'translateX('+x+'px) translateY('+y+'px) rotate('+playerRotation+'deg) scale('+scale+')', 'z-index':zIndex,
+'background-color':(playerState && playerState.withBall)?'green':'transparent'}"
+  (press)="onPress($event)"
+  (pressup)="onPressUp($event)"
+  (panStart)="onPanStart($event)"
+  (panMove)="onPanMove($event)"
+  (panEnd)="onPanEnd($event)"
+  (tap)="onTap($event)"
+>
+  <img #playerSvg src='../../../../assets/gfx/iconBase.svg' >
+  <div
+    style="position:relative; top:-35px; vertical-align: middle; text-align: center; font-size: 80%; z-index: 2"
+  >
+    {{name}}
+    {{playerState ? playerState.withBall : ''}}
+  </div>
+  <app-player-menu *ngIf="showMenu" 
+    [id] = "id" 
+    [rotation]="playerRotation"
+    [(playerState)]="playerState"
+    style="position:absolute; top:0px; left:0px; font-size: 100%; z-index: 2; "
+    [ngStyle]="{'transform':'rotate('+(360-playerRotation)+'deg)','transform-origin':'center center'}"
+  ></app-player-menu>
+</div>

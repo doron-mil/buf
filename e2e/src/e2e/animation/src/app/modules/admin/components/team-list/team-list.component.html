@@ -1,0 +1,44 @@
+<div class="team-list-container" [class.team-list-container-left]="isLeft">
+
+  <div class="team-general-props">
+
+    <div class="spacer"></div>
+
+    <div class="team-select-container">
+      <mat-form-field>
+        <mat-select [(value)]="selectedTeam" [placeholder]="selectedTeam?'':'Select a team'"
+                    (selectionChange)="onTeamSelectionChange($event)" [disabled]="selectedTeamProps.isLocked">
+          <mat-option *ngFor="let team of teams" [value]="team"
+                      [disabled]="team.id === (otherTeamProps.selectedTeam ? otherTeamProps.selectedTeam.id : '')">
+            {{team.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="kit-select-container"
+         [style.visibility]="selectedTeam ? 'visible' : 'hidden'">
+      <mat-form-field>
+        <mat-select placeholder="Kit" [(value)]="selectedKit" (selectionChange)="onTeamKitSelectionChange($event)">
+          <mat-option [value]="kitHomeData">{{kitHomeData.label}}</mat-option>
+          <mat-option [value]="kitAwayData">{{kitAwayData.label}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="players-list">
+    <mat-selection-list (selectionChange)="onPlayersSelectionChange($event)">
+      <mat-list-option *ngFor="let player of teamPlayers;index as index"
+                       [disabled]="selectedTeamProps.isLocked && !selectedTeamProps.playersObjectMap[player.id]"
+                       [value]="player" [selected]="selectedTeamProps.playersObjectMap[player.id]">
+        {{player.number}}. {{player.jerseyName}}
+      </mat-list-option>
+    </mat-selection-list>
+
+  </div>
+
+</div>

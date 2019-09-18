@@ -1,0 +1,19 @@
+.boldText {
+    font-weight: 700
+}
+
+.regularText {
+    font-weight: 100
+}
+
+.passBG {
+    animation-name: passColor;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes passColor {
+    from {background-color: whitesmoke;}
+    to {background-color: yellow;}
+  }

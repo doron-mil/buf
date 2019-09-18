@@ -1,0 +1,247 @@
+.footer-toolbar {
+  height: 100%;
+  background-color: #272727;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+
+  .toolbar-svg-button {
+    background-color: #272727;
+    color: white;
+    border: unset;
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+    padding: 0;
+    margin-left: 0.5vw;
+    min-width: unset;
+
+    &.small {
+      width: 50px;
+      height: 50px;
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+
+      &:after {
+        padding-top: -120px;
+        padding-left: 30px;
+        margin-left: 10px !important;
+        margin-top: -100px;
+
+      }
+    }
+
+    ::ng-deep .mat-button-wrapper {
+      width: 50px;
+      height: 50px;
+      white-space: pre-wrap;
+      display: block;
+      overflow: hidden;
+      line-height: 15px;
+    }
+
+    &:disabled {
+      opacity: 0.2;
+    }
+
+    &:active:after {
+      padding: 0;
+      margin: 0;
+      opacity: 1;
+      transition: 0s
+    }
+  }
+
+
+  .play-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  button {
+    background-color: whitesmoke;
+    width: 50px;
+    height: 50px;
+    margin-right: 0.5vh;
+    border-radius: 8px;
+
+    ::ng-deep .mat-button-wrapper {
+      width: 50px;
+      height: 50px;
+      white-space: pre-wrap;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      line-height: 15px;
+    }
+  }
+
+  .footer-toolbar section {
+    display: flex;
+  }
+
+  .color-select-button {
+    display: flow;
+    position: absolute;
+  }
+
+  .selected-draw-button {
+    border: 3px blue solid;
+  }
+
+  .slider-container {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+
+    ::ng-deep .ng5-slider-tick  {
+      color: yellow !important;
+    }
+  }
+
+  .step-control-buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .record-controls-container {
+    display: flex;
+  }
+
+  .step-display-container {
+    margin: 0 3vw;
+    display: flex;
+    flex-direction: column;
+    color: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .step-number-container {
+    font-family: Rockwell;
+    font-size: xx-large;
+    font-weight: bold;
+    color: yellow;
+    margin-top: 1vh;
+    display: flex;
+    justify-content: center;
+  }
+
+
+  ::ng-deep {
+    .slider-container .ng5-slider .ng5-slider-bar {
+      background: #ffe4d1;
+      height: 2px;
+    }
+
+    .slider-container .ng5-slider .ng5-slider-selection {
+      background: orange;
+    }
+
+    .slider-container .ng5-slider .ng5-slider-pointer {
+      width: 20px;
+      height: 20px;
+      top: -9px;
+      margin-left: -5px;
+      background-color: white;
+    }
+
+    .slider-container .ng5-slider .ng5-slider-pointer:after {
+      display: none;
+    }
+
+    .slider-container .ng5-slider .ng5-slider-bubble {
+      bottom: 14px;
+    }
+
+    .slider-container .ng5-slider .ng5-slider-limit {
+      font-weight: bold;
+      color: orange;
+    }
+
+    .slider-container .ng5-slider .ng5-slider-tick {
+      width: 1px;
+      height: 10px;
+      margin-left: 4px;
+      border-radius: 0;
+      background: #ffe4d1;
+      top: -1px;
+    }
+
+    .slider-container .ng5-slider .ng5-slider-tick.ng5-slider-selected {
+      background: orange;
+    }
+  }
+}
+
+.selected-tool {
+  border: 2px dotted white !important;
+}
+
+::ng-deep {
+  .bottom-toolbar-menu {
+    width: 40vw;
+    max-width: 50vw;
+  }
+
+  .color-button .mat-button-wrapper {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main-options-menu {
+    background-color: rgba(0, 0, 0, 0.3);
+
+    BUTTON, .mat-icon, .option-label {
+      color: white;
+    }
+  }
+
+  .speed-menu {
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 50vh;
+
+    .mat-menu-content {
+      height: 90%;
+
+      .slider-container {
+        position: relative;
+        color: white;
+        height: 95%;
+        padding-left: 3vw;
+      }
+
+      .ng5-slider {
+        height: 100%;
+      }
+
+      .ng5-slider-bubble {
+        color: white !important;
+      }
+    }
+  }
+
+}
+
+
+.drawing-buttons-section {
+  display: flex;
+}
+
+.color-div {
+  width: 60%;
+  height: 60%;
+  border: white 1px solid;
+  border-radius: 3px
+}
+

@@ -1,0 +1,145 @@
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-admin-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-toolbar-container {
+  height: 16vh;
+}
+
+.teams-container, .non-selected-set-container {
+  height: 60vh;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 2vh;
+}
+
+.non-selected-set-container {
+  font-size: xx-large;
+  color: blue;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-team-section, .right-team-section {
+  width: 48%;
+  height: 100%;
+}
+
+.center-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.main-control-section {
+  width: 100%;
+  //height: 20vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3vh;
+}
+
+.set-select-container, .buttons-container {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons-container {
+  justify-content: flex-start;
+}
+
+::ng-deep {
+  .set-select-container .mat-form-field {
+    width: 30vw;
+  }
+}
+
+.field-section {
+  position: relative;
+  align-self: center;
+  width: 100%;
+  height: 100%;
+}
+
+.add-set-button {
+  height: max-content;
+  align-self: center;
+  margin-left: 4vw;
+}
+
+.admin-button {
+  margin-left: 2vw;
+}
+
+.toolbar-svg-button {
+  background-color: #272727;
+  color: white;
+  border: unset;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+  padding: 0;
+  margin-left: 0.5vw;
+  min-width: unset;
+
+  .mat-icon {
+    color: white;
+  }
+
+  &:disabled {
+    opacity: 0.2;
+  }
+}
+
+.controls-section-template {
+  display: flex;
+
+  ::ng-deep {
+    .mat-form-field-wrapper {
+      padding: 0;
+
+      .mat-form-field-underline {
+        visibility: hidden;
+      }
+    }
+
+    .mat-form-field-infix {
+      color: white;
+      border: 1px solid white;
+    }
+
+  }
+}
+
+::ng-deep .select-set-panel {
+  background-color: rgba(0, 0, 0, 0.3);
+
+  .mat-option {
+    color: white;
+
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+  }
+}
+
+.toolbar-buttons-tooltip {
+  font-size: smaller;
+  max-width: unset !important;
+  overflow: auto !important;
+
+}

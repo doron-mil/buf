@@ -1,0 +1,8 @@
+<canvas id="paperCanvas" class="canvas-layer" style="z-index: 100"
+        [ngStyle]="{ 'transform':'translateX(' + fieldProps.offset.x + 'px) translateY('+ fieldProps.offset.y +  'px)'}"
+        [class.drawing-cursor]="isDrawingCursor"
+        [class.dragging-cursor]="isDraggingCursor">
+</canvas>
+<canvas id="paperPathCanvas" class="canvas-layer"
+        [ngStyle]="{ 'transform':'translateX(' + fieldProps.offset.x + 'px) translateY('+ fieldProps.offset.y +  'px)'}">
+</canvas>

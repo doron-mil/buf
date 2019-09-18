@@ -1,0 +1,43 @@
+app-field-main {
+}
+
+.fieldLayer {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 50%
+}
+
+.fieldBGLayer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.fieldCanvasLayer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.fieldGesturesLayer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3
+}
+
+.fieldPlayersLayer {
+  position: absolute;
+  left: 0px;
+  z-index: 4;
+  /* transform-origin: 50% 50% */
+}
+
+
+.moveTransition {
+  transition-property: transform;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+}

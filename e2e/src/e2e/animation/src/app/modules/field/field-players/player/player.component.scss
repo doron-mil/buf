@@ -1,0 +1,11 @@
+.playerMain {
+    position: absolute;
+    width:70px;
+    height:70px;
+}
+
+.moveTransition {
+    transition-property: transform;
+    transition-timing-function: ease-out;
+    transition-delay: 0s;
+}

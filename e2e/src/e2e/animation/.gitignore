@@ -46,5 +46,6 @@ testem.log
 Thumbs.db
 
 # environment
-# animation
-e2e/**/environments
+environment.*
+
+/animation

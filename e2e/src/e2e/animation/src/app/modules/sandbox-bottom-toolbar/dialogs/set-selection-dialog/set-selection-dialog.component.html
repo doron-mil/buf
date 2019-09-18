@@ -1,0 +1,17 @@
+<div class="dialog-container">
+
+    <div class="body-content">
+
+      <mat-grid-list cols="3" rowHeight="{{rowHeight}}">
+        <mat-grid-tile *ngFor="let playSet of playSets" >
+          <button mat-stroked-button (click)="selectSet( playSet )"
+                  class="select-set-button">
+            {{playSet.name}}
+          </button>
+
+        </mat-grid-tile>
+      </mat-grid-list>
+
+    </div> <!--body-content-->
+
+  </div>

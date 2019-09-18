@@ -1,0 +1,23 @@
+.fieldBG {
+  background-color: green;
+  background: url("../../../../assets/gfx/grass.jpg");
+  background-size: 130px 130px;
+  clip: rect(0px, 1920px, 0px, 1080px);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  IMG {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.fieldImage {
+  opacity: 1;
+  mix-blend-mode: soft-light;
+}
+
+.field-mage-container{
+  position: absolute;
+}

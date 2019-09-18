@@ -1,0 +1,14 @@
+<div class="players-container"
+     [ngStyle]="{ 'transform':'translateX(' + fieldProps.offset.x + 'px) translateY('+ fieldProps.offset.y +  'px)'}" >
+  <div *ngFor="let player of simplePlayersArray; index as index">
+    <app-player #appPlayer id={{player.id}}
+                [name]="player.jerseyName"
+                [number]="player.number"
+                [id]="player.id"
+                [index]="index"
+                [percentX]="player.x"
+                [percentY]="player.y"
+                [playerRotation]="player.rotation"
+    ></app-player>
+  </div>
+</div>

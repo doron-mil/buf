@@ -1,0 +1,199 @@
+<mat-toolbar class="footer-toolbar">
+
+
+  <section>
+    <button mat-icon-button class="toolbar-svg-button" [matMenuTriggerFor]="mainOptionsMenu">
+      <mat-icon>apps</mat-icon>
+    </button>
+
+
+    <mat-menu #mainOptionsMenu="matMenu" class="main-options-menu">
+      <button mat-menu-item (click)="goToAdmin()">
+        <mat-icon>home</mat-icon>
+        <span>
+          Go Admin
+        </span>
+      </button>
+
+      <button mat-menu-item (click)="goToDrawing()">
+        <mat-icon>brush</mat-icon>
+        <span>
+          Go Animation Main
+        </span>
+      </button>
+
+      <button mat-menu-item (click)="goToRecording()">
+        <mat-icon>fiber_manual_record</mat-icon>
+        <span>
+          Go Animation Recording
+        </span>
+      </button>
+
+      <button mat-menu-item [matMenuTriggerFor]="speedMenu" *ngIf="selectedStep > 0">
+        <mat-icon>speed</mat-icon>
+        <span>
+          Animation speed
+        </span>
+      </button>
+
+
+      <button mat-menu-item (click)="toggleDraw()">
+        <mat-icon>pan_tool</mat-icon>
+        <span>
+          Drug mode
+        </span>
+        <mat-icon *ngIf="currentSelectedDrawAction === drawingActionRequestType.DRAGGING_MODE">check</mat-icon>
+      </button>
+
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>link_off</mat-icon>
+        <span>
+          Logoff
+        </span>
+        <mat-icon *ngIf="currentSelectedDrawAction === drawingActionRequestType.DRAGGING_MODE">check</mat-icon>
+      </button>
+
+    </mat-menu>
+
+    <mat-menu #speedMenu="matMenu" class="speed-menu">
+      <div mat-menu-item class="slider-container">
+        <ng5-slider [(value)]="animationSpeed" [options]="animationSpeedOptions"
+                    (valueChange)="animationSpeedChanged()"></ng5-slider>
+      </div>
+    </mat-menu>
+
+  </section>
+
+  <ng-container [ngTemplateOutlet]="controlsTemplate"></ng-container>
+
+
+  <section *ngIf="!isAdminMode">
+    <button mat-stroked-button class="toolbar-svg-button"
+            (click)="selectSet()">
+      <img src="assets/toolbar_icons/1-Set_List-01.svg">
+    </button>
+    <button mat-stroked-button class="toolbar-svg-button" (click)="zoomToAction()">
+      <img src="assets/toolbar_icons/2-Zoom_2_Action-01.svg">
+    </button>
+    <button mat-stroked-button class="toolbar-svg-button" (click)="resetZoom()">
+      <img src="assets/toolbar_icons/3-Reset_Zoom-01.svg">
+    </button>
+
+    <button mat-stroked-button class="toolbar-svg-button" (click)="toggleScrimmageVisibility()"
+            [class.selected-tool]="scrimmageIsOn">
+      <img src="assets/toolbar_icons/4-Yellow_Line_V2-01.svg">
+    </button>
+
+  </section>
+
+  <section class="play-section">
+
+    <ng-container *ngIf="isAdminMode || isPlayMode">
+      <div class="slider-container">
+        <ng5-slider [(value)]="selectedStep" [options]="animationStepOptions"
+                    (valueChange)="animationStepChanged()"></ng5-slider>
+
+      </div>
+
+      <div class="step-control-buttons">
+        <button mat-stroked-button class="toolbar-svg-button small"
+                matTooltip="Stop Animation" matTooltipClass="toolbar-buttons-tooltip"
+                (click)="stop()" [disabled]="selectedStep === 0 || !isPlaying">
+          <img src="assets/toolbar_icons/TL_1-Stop-01.svg">
+        </button>
+
+        <button mat-stroked-button *ngIf="isAdminMode"
+                matTooltip="Record Animation" matTooltipClass="toolbar-buttons-tooltip"
+                (click)="record()" class="toolbar-svg-button small"
+                [disabled]="(availableSteps === 0)|| isPlaying ||( selectedStep < lastRecordedStep)"
+                [style.background-color]="isRecording?'red':''">
+          <img src="assets/toolbar_icons/TL_2-Record-01.svg">
+        </button>
+
+        <button mat-stroked-button class="toolbar-svg-button small"
+                matTooltip="Play Animation" matTooltipClass="toolbar-buttons-tooltip"
+                (click)="play()" [disabled]="selectedStep === 0 || isPlaying || selectedStep > lastRecordedStep">
+          <img src="assets/toolbar_icons/TL_3-Play-01.svg">
+        </button>
+      </div>
+
+    </ng-container>
+
+  </section>
+
+  <section *ngIf="false" class="record-controls-container">
+    <div class="record-buttons-container">
+
+      <button mat-stroked-button (click)="addStep()" class="toolbar-svg-button"
+              [disabled]="(availableSteps === 0) || (lastRecordedStep !== availableSteps)">
+        ADD STEP
+      </button>
+    </div>
+
+    <div class="step-display-container">
+      Step
+      <div class="step-number-container">
+        {{selectedStep}}/{{availableSteps}}
+      </div>
+    </div>
+
+  </section>
+
+  <section *ngIf="!isAdminMode" class="drawing-buttons-section">
+    <button mat-stroked-button class="toolbar-svg-button"
+            [class.selected-tool]="currentSelectedDrawAction === drawingActionRequestType.FREE_DRAWING"
+            (click)="toggleFreeDrawing()">
+      <img src="assets/toolbar_icons/6-Reg_Line-01.svg">
+    </button>
+    <button mat-stroked-button class="toolbar-svg-button"
+            [class.selected-tool]="currentSelectedDrawAction === drawingActionRequestType.ARROW_LINE_DRAWING"
+            (click)="toggleArrowLineDrawing()">
+      <img src="assets/toolbar_icons/6-Arrow_Line-01.svg">
+    </button>
+    <button mat-stroked-button class="toolbar-svg-button"
+            [class.selected-tool]="currentSelectedDrawAction === drawingActionRequestType.LINE_DRAWING"
+            (click)="toggleLineDrawing()">
+      <img src="assets/toolbar_icons/7-Straight_Line-01.svg">
+    </button>
+    <button mat-stroked-button class="toolbar-svg-button"
+            [class.selected-tool]="currentSelectedDrawAction === drawingActionRequestType.AREA_DRAWING"
+            (click)="createArea()">
+      <img src="assets/toolbar_icons/9-Action_Area-01.svg">
+    </button>
+
+    <button mat-stroked-button id="colorOpener" #colorOpener class="toolbar-svg-button color-button"
+            (click)="selectColor()">
+      <div [style.background-color]="selectedColor" class="color-div"></div>
+      <!--      <img src="assets/toolbar_icons/8_Color_Frame-01.svg" [style.background-color]="selectedColor">-->
+    </button>
+    <ng-container *ngIf="colorPaletteIsOpened">
+      <button mat-stroked-button *ngFor="let color of getFilteredColorsPalette();index as index"
+              class="toolbar-svg-button color-button"
+              [style.top]="-(index*45+12) +'px'"
+              [style.left]="colorOpener._getHostElement().offsetLeft - 16  + 'px'"
+              [style.background-color]="'transparent'"
+              [style.display]="(color === selectedColor )? 'none' : ''"
+              (click)="colorSelected(color)" class="color-select-button">
+        <div [style.background-color]="color" class="color-div"></div>
+        <!--        <img src="assets/toolbar_icons/8_Color_Frame-01.svg" [style.background-color]="color">-->
+      </button>
+    </ng-container>
+
+    <button mat-stroked-button class="toolbar-svg-button"
+            (click)="undoLastObject()">
+      <img src="assets/toolbar_icons/10-Undo-01.svg">
+    </button>
+
+    <button mat-stroked-button class="toolbar-svg-button"
+            (click)="resetDrawing()">
+      <img src="assets/toolbar_icons/11_Reset-01.svg">
+    </button>
+
+  </section>
+
+  <section>
+
+  </section>
+
+
+</mat-toolbar>

@@ -1,0 +1,20 @@
+<div class="fieldLayer" #field >
+  <app-field-background class="fieldBGLayer"></app-field-background>
+<!--  <app-canvas class="fieldCanvasLayer"></app-canvas>-->
+  <app-paper-draw-canvas class="fieldCanvasLayer"></app-paper-draw-canvas>
+  <div class="fieldGesturesLayer" *ngIf="!activeDrawLayer"
+    (panstart)="onPanStart($event)"
+    (panmove)="onPanMove($event)"
+    (panend)="onPanEnd($event)"
+    (pinchmove)="onPinchMove($event)"
+    (pinchend)="onPinchEnd($event)"
+    (rotatestart)="onRotateStart($event)"
+    (rotatemove)="onRotateMove($event)"
+    (rotateend)="onRotateEnd($event)"
+    (tap)="onTap($event)"
+  ></div>
+  <app-field-players #fieldPlayers class="fieldPlayersLayer" [ngStyle]="{'transform':'scale('+playersScale+')'}">
+  </app-field-players>
+  <button style="position: absolute;z-index: 10;bottom:120px;width: 80px;" (click)="saveState()">Save State</button>
+  <button style="position: absolute;z-index: 10;bottom:140px;width: 80px;" (click)="loadState()">Load State</button>
+</div>

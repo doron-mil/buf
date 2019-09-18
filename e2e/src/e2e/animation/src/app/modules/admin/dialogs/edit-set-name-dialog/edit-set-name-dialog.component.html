@@ -1,0 +1,30 @@
+<div class="dialog-container">
+  <div class="message-title">
+    <div class="header">
+      {{isNewSet ? 'Create new Set' : 'Update name of Set'}}
+    </div>
+    <img src="assets/window-close.png" (click)="closeDialog()" class="close-img">
+  </div>
+  <hr class="line">
+  <div class="body-content">
+
+    <input matInput #nameInput placeholder="Edit Set name" [value]="setName" class="input-name"
+           (keydown.enter)="nameInput.value && onKeydown(nameInput.value)">
+
+  </div> <!--body-section-->
+
+  <div class="buttons-container">
+    <button mat-raised-button (click)="closeDialog()" color="accent"
+            class="dialog-button">
+      Cancel
+    </button>
+
+    <button mat-raised-button (click)="submit(nameInput.value)" color="primary" [disabled]="!nameInput.value"
+            class="dialog-button">
+      Submit
+    </button>
+
+  </div> <!--buttons-section-->
+
+</div>
+

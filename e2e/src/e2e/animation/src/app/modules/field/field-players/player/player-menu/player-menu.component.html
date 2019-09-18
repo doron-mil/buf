@@ -1,0 +1,8 @@
+<div style="position: absolute;left:35px;">
+    <button style="font-size:130%; padding: 10px" [ngClass]="playerState.name=='kneel'?'boldText':'regularText'" (click)="onKneel()">Kneel</button>
+    <button style="font-size:130%; padding: 10px" [ngClass]="passBgAnimation" (click)="onPass()">Pass</button>
+    <button style="font-size:130%; padding: 10px" (click)="onTackle()">Tackle</button>
+    <button style="font-size:130%; padding: 10px" (click)="onScrimage()">Scrimage</button>
+    <button style="font-size:130%; padding: 10px" [ngClass]="playerState.withBall?'boldText':'regularText'" (click)="onBall()">Ball</button>
+</div>
+

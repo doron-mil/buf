@@ -1,0 +1,29 @@
+.home {
+  background-size: 150px 150px;
+  background: url("../../../../../assets/gfx/grass.jpg") repeat;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-toolbar-container {
+  width: 100%;
+  height: 10vh;
+}
+
+.bottom-toolbar-container {
+  width: 100%;
+  height: 20vh;
+}
+
+.field-container  {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.header-toolbar {
+  background-color: lightgreen;
+}
