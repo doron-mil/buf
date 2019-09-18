@@ -31,7 +31,7 @@ export class DataService implements OnDestroy {
               private jsonConverterService: AngularJsonClassConverterService) {
 
     this.authService.signIn('doron.miller@gmail.com', '123456');
-    
+
     this.authService.isLoggedIn.pipe(takeUntil(this.onDestroy$)).subscribe((subscriptionObj: LoggedInInterface) => {
       if (subscriptionObj.isLogged) {
         this.retrieveData();
@@ -45,7 +45,7 @@ export class DataService implements OnDestroy {
   }
 
   private retrieveData() {
-    const untilObservable = merge( this.onDestroy$ , this.authService.isLoggedIn
+    const untilObservable = merge(this.onDestroy$, this.authService.isLoggedIn
       .pipe(filter((subscriptionObj: LoggedInInterface) => !subscriptionObj.isLogged)));
 
     // Retrieving teams
@@ -97,7 +97,7 @@ export class DataService implements OnDestroy {
     snapshotChanges.pipe(take(1)).subscribe((jsonSet) => {
       const convertedSet = this.jsonConverterService.convertOneObject<set>(jsonSet, 'set');
       this.ngRedux.dispatch(ActionGenerator.playersSetUpdate(convertedSet));
-     });
+    });
   }
 
   createNewSet(aNewSet: set): Promise<set> {
