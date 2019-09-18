@@ -46,4 +46,4 @@ testem.log
 Thumbs.db
 
 # environment
-/src/e2e/animation/*
+/src/e2e/animation
