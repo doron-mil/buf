@@ -97,7 +97,7 @@ export class FieldPlayersComponent implements OnInit, OnDestroy {
         if (modeType !== ModeType.NONE) {
           this.paperProject.activeLayer.removeChildren();
         }
-        // In case animation played and there is a request to stop
+        // In case animation-recording played and there is a request to stop
         if (modeType !== ModeType.PLAY_ANIMATION && this.animationMode) {
           this.clearPlayInterval();
           this.animationMode = false;

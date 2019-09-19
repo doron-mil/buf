@@ -26,6 +26,7 @@
         </app-team-list>
       </div>
 
+      <div class="teams-divider"></div>
 
       <div class="right-team-section">
         <app-team-list [teams]="teams" *ngIf="selectedSet"
@@ -43,6 +44,7 @@
 
   <div class="bottom-toolbar-container">
     <app-bottom-toolbar style="z-index:3" class="app-bottom-toolbar"
+                        [currentComponent]="pageType"
                         [controlsTemplate]="adminControlsTemplate">
 
     </app-bottom-toolbar>

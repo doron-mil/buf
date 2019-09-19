@@ -13,7 +13,7 @@ import {SetSelectionDialogComponent} from '../../dialogs/set-selection-dialog/se
 import {ToolbarControllerService} from '../../../../shared/services/toolbar-controller.service';
 import {DataService} from 'src/app/shared/services/data.service';
 import {StoreService} from '../../../../shared/services/store.service';
-import {ModeType} from '../../../../shared/dataModels/general.model';
+import {ModeType, PageTypeEnum} from '../../../../shared/dataModels/general.model';
 import {ActionGenerator} from '../../../../store/actions/action';
 import {StoreDataTypeEnum} from '../../../../store/storeDataTypeEnum';
 import {AnimationControlData, DrawingActionRequestType} from '../../../../shared/dataModels/innerData.model';
@@ -28,6 +28,9 @@ const SETS_ROW_HEIGHT = 34;
   styleUrls: ['./bottom-toolbar.component.scss']
 })
 export class BottomToolbarComponent implements OnInit, OnDestroy {
+
+  @Input()
+  currentComponent: PageTypeEnum;
 
   @Input()
   controlsTemplate: TemplateRef<any>;
@@ -58,16 +61,18 @@ export class BottomToolbarComponent implements OnInit, OnDestroy {
 
   drawingActionRequestType = DrawingActionRequestType;
   currentSelectedDrawAction: DrawingActionRequestType;
-  CanvasActionRequestTypeEnum = DrawingActionRequestType;
   scrimmageIsOn = false;
 
   isRecording = false;
   isPlaying = false;
-  isPlayMode = true;
 
   selectedStep: number;
   lastRecordedStep: number;
   availableSteps: number;
+
+  selectedSetId: string;
+
+  pageTypeEnum = PageTypeEnum;
 
   private onDestroy$ = new Subject<boolean>();
 
@@ -89,6 +94,8 @@ export class BottomToolbarComponent implements OnInit, OnDestroy {
     this.listenToAnimationControlDataChange();
 
     this.onModeTypeChange();
+
+    this.onSelectedSetChange();
   }
 
   ngOnDestroy() {
@@ -117,6 +124,14 @@ export class BottomToolbarComponent implements OnInit, OnDestroy {
       });
   }
 
+  private onSelectedSetChange() {
+    this.ngRedux.select<string>([StoreDataTypeEnum.INNER_DATA, 'selectedSetId'])
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((selectedSetId: string) => {
+        this.selectedSetId = selectedSetId;
+      });
+  }
+  
   private onModeTypeChange() {
     this.storeService.getModeTypeChangeObservable()
       .pipe(takeUntil(this.onDestroy$))

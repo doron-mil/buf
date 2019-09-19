@@ -14,7 +14,7 @@ import {MessagesComponent} from './components/messages/messages.component';
 import {AdminLoginComponent} from './components/admin-login/admin-login.component';
 import {AdminRoutingModule} from './admin-routing.module';
 import {AuthGuard} from './auth/services/authguard.service';
-import {AnimationComponent} from './components/animation/animation.component';
+import {AnimationRecordingComponent} from './components/animation-recording/animation-recording.component';
 import {HomeModule} from '../home/home.module';
 import {SandboxBottomToolbarModule} from '../sandbox-bottom-toolbar/sandbox-bottom-toolbar.module';
 
@@ -26,7 +26,7 @@ import {SandboxBottomToolbarModule} from '../sandbox-bottom-toolbar/sandbox-bott
     EditSetNameDialogComponent,
     MessagesComponent,
     AdminLoginComponent,
-    AnimationComponent
+    AnimationRecordingComponent
   ],
   imports: [
     CommonModule,

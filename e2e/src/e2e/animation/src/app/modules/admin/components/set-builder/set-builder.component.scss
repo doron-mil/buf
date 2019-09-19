@@ -23,9 +23,14 @@
   padding-bottom: 2vh;
 }
 
+.teams-container {
+  background: rgba(144, 238, 144, 0.8);
+}
+
 .non-selected-set-container {
+  background: url("../../../../../assets/gfx/grass.jpg") repeat;
   font-size: xx-large;
-  color: blue;
+  color: yellow;
   justify-content: center;
   align-items: center;
 }
@@ -33,6 +38,14 @@
 .left-team-section, .right-team-section {
   width: 48%;
   height: 100%;
+}
+
+.teams-divider {
+  background-color: white;
+  width: 4%;
+  height: 100%;
+  padding-bottom: 5vh;
+
 }
 
 .center-section {

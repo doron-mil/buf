@@ -25,6 +25,7 @@ import {StaticDataState} from '../../../../store/states/static.data.state';
 import {AnimationControlData, PlayerFieldDataInterface} from '../../../../shared/dataModels/innerData.model';
 import {FieldTrackingService} from '../../../field/field-tracking.service';
 import {MessagesService} from '../../services/messages.service';
+import {PageTypeEnum} from '../../../../shared/dataModels/general.model';
 
 const NEW_SET_TMP_ID = 'NEW_SET_TMP_ID';
 
@@ -37,6 +38,8 @@ const PLAYER_EXTRA_DATA_PROPERTY = 'playerExtraData';
   styleUrls: ['./set-builder.component.scss']
 })
 export class SetBuilderComponent implements OnInit, OnDestroy {
+
+  pageType = PageTypeEnum.ADMIN;
 
   teams: team[];
 
@@ -265,7 +268,7 @@ export class SetBuilderComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Saving players position only if animation was not recorded even once
+   * Saving players position only if animation-recording was not recorded even once
    */
   private syncPlayersLocationIfNeeded() {
     if (this.selectedSet && this.selectedSet.players && this.selectedSet.players.length > 0) {

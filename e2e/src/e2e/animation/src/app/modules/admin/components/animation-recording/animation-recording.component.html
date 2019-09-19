@@ -3,6 +3,8 @@
     <app-field-main></app-field-main>
   </div>
   <div class="bottom-toolbar-container">
-    <app-bottom-toolbar style="z-index:3" class="app-bottom-toolbar"></app-bottom-toolbar>
+    <app-bottom-toolbar class="app-bottom-toolbar" [currentComponent]="pageType">
+
+    </app-bottom-toolbar>
   </div>
 </div>

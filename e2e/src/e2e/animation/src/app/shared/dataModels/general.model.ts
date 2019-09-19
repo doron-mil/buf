@@ -6,6 +6,13 @@ export enum ModeType {
   PLAY_ANIMATION,
 }
 
+export enum PageTypeEnum {
+  NONE,
+  ADMIN,
+  RECORDING,
+  PRESENTATION,
+}
+
 export class Pos {
   x: number;
   y: number;
