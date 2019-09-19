@@ -23,6 +23,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   @Input() id: string;
   @Input() name: string;
+  @Input() kitId: string;
   @Input() number: number;
   @Input() index: number;
   @Input() percentX: number;

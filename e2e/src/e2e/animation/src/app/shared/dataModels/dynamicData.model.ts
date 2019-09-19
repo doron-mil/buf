@@ -45,6 +45,7 @@ export class SetPlayerSimple {
   id: string;
   jerseyName: string;
   number: number;
+  kitId: string;
   x = 0;
   y = 0;
   rotation = 0;

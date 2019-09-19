@@ -23,3 +23,21 @@
 .kit-select-container {
   margin-bottom: -25px;
 }
+
+.team-general-props {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  IMG {
+    width: 80%;
+    height: 80%;
+  }
+}

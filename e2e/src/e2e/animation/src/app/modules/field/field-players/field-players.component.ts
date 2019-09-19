@@ -209,7 +209,7 @@ export class FieldPlayersComponent implements OnInit, OnDestroy {
       this.players.forEach((setPlayer: SetPlayer) => {
         let foundSimplePlayer = simplePlayersObjMap[setPlayer.id];
         if (foundSimplePlayer) {
-          this.setPositionOnSimpleSetPlayer(foundSimplePlayer, setPlayer);
+          this.updateSimpleSetPlayer(foundSimplePlayer, setPlayer);
         } else {
           foundSimplePlayer = this.createSimplePlayer(setPlayer, playersArray);
         }
@@ -225,6 +225,7 @@ export class FieldPlayersComponent implements OnInit, OnDestroy {
   private createSimplePlayer(aSetPlayer: SetPlayer, aPlayersArray: player[]) {
     const newSimpleSetPlayer = new SetPlayerSimple();
     newSimpleSetPlayer.id = aSetPlayer.id;
+    newSimpleSetPlayer.kitId = aSetPlayer.kitId;
 
     // assigning extra data
     const dbPlayer = aPlayersArray.find(fullDataPlayerItem => fullDataPlayerItem.id === aSetPlayer.id);
@@ -234,13 +235,14 @@ export class FieldPlayersComponent implements OnInit, OnDestroy {
     }
 
     // Assigning x and y
-    this.setPositionOnSimpleSetPlayer(newSimpleSetPlayer, aSetPlayer);
+    this.updateSimpleSetPlayer(newSimpleSetPlayer, aSetPlayer);
 
     return newSimpleSetPlayer;
   }
 
 
-  private setPositionOnSimpleSetPlayer(aSimpleSetPlayer4Update: SetPlayerSimple, aSetPlayer: SetPlayer) {
+  private updateSimpleSetPlayer(aSimpleSetPlayer4Update: SetPlayerSimple, aSetPlayer: SetPlayer) {
+    aSimpleSetPlayer4Update.kitId = aSetPlayer.kitId;
     if (aSetPlayer.animation && aSetPlayer.animation[0] && aSetPlayer.animation[0].path &&
       aSetPlayer.animation[0].path.length > 0) {
       const pathKeyframeData = aSetPlayer.animation[0].path[0];

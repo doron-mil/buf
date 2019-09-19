@@ -1,11 +1,25 @@
 .playerMain {
-    position: absolute;
-    width:70px;
-    height:70px;
+  position: absolute;
+  width: 70px;
+  height: 70px;
 }
 
 .moveTransition {
-    transition-property: transform;
-    transition-timing-function: ease-out;
-    transition-delay: 0s;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+}
+
+.player-data {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-weight: bolder;
+  font-size: x-large;
+  color: yellow;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
