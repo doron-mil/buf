@@ -30,8 +30,6 @@ export class DataService implements OnDestroy {
               private authService: AuthService,
               private jsonConverterService: AngularJsonClassConverterService) {
 
-    this.authService.signIn('doron.miller@gmail.com', '123456');
-
     this.authService.isLoggedIn.pipe(takeUntil(this.onDestroy$)).subscribe((subscriptionObj: LoggedInInterface) => {
       if (subscriptionObj.isLogged) {
         this.retrieveData();

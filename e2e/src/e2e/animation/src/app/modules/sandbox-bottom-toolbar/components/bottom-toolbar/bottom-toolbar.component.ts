@@ -36,7 +36,7 @@ export class BottomToolbarComponent implements OnInit, OnDestroy {
   controlsTemplate: TemplateRef<any>;
 
   isAdminMode = false;
-  animationSpeed = 40;
+  animationSpeed = 10;
   animationSpeedOptions: Options = {
     floor: 0,
     ceil: 100,

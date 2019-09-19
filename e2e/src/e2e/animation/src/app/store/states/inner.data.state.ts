@@ -33,7 +33,7 @@ export const INITIAL_INNER_DATA_STATE: InnerDataState = {
   passSourcePlayerId: '',
   passTargetPlayerId: '',
   animationControlData: new AnimationControlData(0, 0),
-  animationSpeed: 40,
+  animationSpeed: 10,
   selectedSetId: undefined,
 };
 

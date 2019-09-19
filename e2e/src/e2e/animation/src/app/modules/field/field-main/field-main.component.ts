@@ -6,6 +6,7 @@ import {takeUntil} from 'rxjs/operators';
 
 import {NgRedux} from '@angular-redux/store';
 
+
 import {DataService} from 'src/app/shared/services/data.service';
 import {environment} from 'src/environments/environment';
 import {FieldPlayersComponent} from '../field-players/field-players.component';
@@ -43,6 +44,8 @@ export class FieldMainComponent implements OnInit, AfterViewInit, OnDestroy {
 
   activeDrawLayer = false;
 
+  isProd: boolean;
+
   private onDestroy$ = new Subject<boolean>();
 
   constructor(private ngRedux: NgRedux<any>,
@@ -57,7 +60,9 @@ export class FieldMainComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
 
-    this.data.behaviours["states"].subscribe(statesData => {
+    this.isProd = environment.production;
+
+    this.data.behaviours['states'].subscribe(statesData => {
       this.playerStates = statesData;
     });
 
@@ -183,7 +188,6 @@ export class FieldMainComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
 
- 
   saveState() {
     const state = this.ngRedux.getState();
     localStorage.setItem('store', JSON.stringify(state));

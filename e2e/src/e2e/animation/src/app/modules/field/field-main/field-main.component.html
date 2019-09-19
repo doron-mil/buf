@@ -15,6 +15,6 @@
   ></div>
   <app-field-players #fieldPlayers class="fieldPlayersLayer" [ngStyle]="{'transform':'scale('+playersScale+')'}">
   </app-field-players>
-  <button style="position: absolute;z-index: 10;bottom:120px;width: 80px;" (click)="saveState()">Save State</button>
-  <button style="position: absolute;z-index: 10;bottom:140px;width: 80px;" (click)="loadState()">Load State</button>
+  <button style="position: absolute;z-index: 10;bottom:120px;width: 80px;" (click)="saveState()" *ngIf="!isProd">Save State</button>
+  <button style="position: absolute;z-index: 10;bottom:140px;width: 80px;" (click)="loadState()" *ngIf="!isProd">Load State</button>
 </div>

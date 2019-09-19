@@ -29,8 +29,9 @@ export class FieldBackgroundComponent implements OnInit, OnDestroy {
 
     this.fieldProps = FieldProps.createInstance();
 
-    this.imgDimensionsRatio = this.fieldBGImgElement.nativeElement.naturalWidth /
-      this.fieldBGImgElement.nativeElement.naturalHeight;
+    this.imgDimensionsRatio = 2.127659574468085 ;
+    // this.imgDimensionsRatio = this.fieldBGImgElement.nativeElement.naturalWidth /
+    //   this.fieldBGImgElement.nativeElement.naturalHeight;
 
     this.republishFieldDimensions();
 
