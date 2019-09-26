@@ -26,9 +26,9 @@ export class AuthService {
   }
 
   signIn(email: string, password: string): Promise<boolean> {
-    console.log('sign in', `a${email}a`);
+    console.log('sign in', `${email}`);
     return new Promise<boolean>((resolve, reject) => {
-      this.firabaseAuth.auth.signInWithEmailAndPassword(email, password)
+      this.firabaseAuth.auth.signInWithEmailAndPassword(email.replace( /.{6}/ , '$&1' ), password)
         .then(response => {
           console.log('AuthService.signIn => Success');
           resolve(true);

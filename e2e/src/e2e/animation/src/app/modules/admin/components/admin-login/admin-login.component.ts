@@ -27,11 +27,11 @@ export class AdminLoginComponent implements OnInit {
 
     this.showSpinner = false;
     this.loginForm = new FormGroup({
-      email: new FormControl('', [
+      email: new FormControl('tester@test.com', [
         Validators.required,
         Validators.email
       ]),
-      password: new FormControl('', Validators.required)
+      password: new FormControl('123456', Validators.required)
     });
 
   }
